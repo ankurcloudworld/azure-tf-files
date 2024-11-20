@@ -15,7 +15,7 @@ on:
       storage_account_name:
         description: 'Enter the Storage Account name to manage'
         required: false
-        default: 'sample-storage-account'
+        default: 'sampleankurstorageacc'
       proceed_apply:
         description: 'Would you like to apply the Terraform changes?'
         required: true
