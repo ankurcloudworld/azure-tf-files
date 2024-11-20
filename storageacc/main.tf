@@ -16,7 +16,7 @@ module "avm-res-storageaccount" {
   account_tier        = "Standard"
   account_kind        = "StorageV2"
   depends_on          = [module.resource_group]
-  managed_identities = {
-    system_assigned            = true
+  identity {
+    type = "SystemAssigned"
   }
 }
