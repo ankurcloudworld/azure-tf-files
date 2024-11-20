@@ -1,4 +1,4 @@
-name: Terraform Deploy
+name: Terraform Keyvault Deploy
 
 on:
   workflow_dispatch:
