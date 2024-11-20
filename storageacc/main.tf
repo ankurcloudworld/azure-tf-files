@@ -17,6 +17,6 @@ module "avm-res-storageaccount" {
   account_kind        = "StorageV2"
   https_traffic_only_enabled = true
   allow_blob_public_access   = false
-  allow_shared_key_access    = true
+  shared_access_key_enabled = true
   depends_on          = [module.resource_group]
 }
