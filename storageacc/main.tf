@@ -5,19 +5,16 @@ module "resource_group" {
   location            = var.location
 }
 
+resource "azurerm_storage_account" "sa" {
+  name                     = "${var.storage_account_name}${var.environment_name}"
+  resource_group_name      = module.resource_group.name
+  location                 = var.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  shared_access_key_enabled       = false
 
-
-module "avm-res-storageaccount" {
-  source              = "Azure/avm-res-storage-storageaccount/azurerm"
-  version             = "0.2.7"  # You can specify the latest version
-  resource_group_name = module.resource_group.name
-  location            = var.location
-  name                = "${var.storage_account_name}${var.environment_name}"
-  account_tier        = "Standard"
-  account_kind        = "StorageV2"
-  account_replication_type      = "LRS"
-  depends_on          = [module.resource_group]
-  managed_identities = {
-    system_assigned            = true
+  tags = {
+    environment = var.environment_name
   }
+ 
 }
