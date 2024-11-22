@@ -14,6 +14,7 @@ resource "azurerm_storage_account" "sa" {
 
   tags = {
     environment = var.environment_name
+    purpose     = "testing-update"
   }
  
 }
