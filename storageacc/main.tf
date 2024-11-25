@@ -14,7 +14,7 @@ resource "azurerm_resource_group" "new_rg" {
 # Use the appropriate resource group in the storage account
 resource "azurerm_storage_account" "sa" {
   name                     = "${var.storage_account_name}${var.environment_name}"
-  resource_group_name      = coalesce(data.azurerm_resource_group.existing_rg.name, azurerm_resource_group.new_rg[0].name)
+  resource_group_name      = coalesce(try(data.azurerm_resource_group.existing_rg.name, null), try(azurerm_resource_group.new_rg[0].name, null))
   location                 = var.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
